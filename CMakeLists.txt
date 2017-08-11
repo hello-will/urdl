@@ -1,17 +1,20 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.5)
 project(urdl CXX)
 
 find_package(Boost)
+find_package(OpenSSL)
 option(URDL_HEADER_ONLY "urdl header only" OFF)
 option(URDL_TEST "compile urdl test" OFF)
 option(URDL_EXAMPLE "compile urdl example" OFF)
 
 include_directories(
     ${Boost_INCLUDE_DIRS}
+    ${OpenSSL_INCLUDE_DIRS}
     ${CMAKE_CURRENT_LIST_DIR}/include
 )
 link_directories(
     ${Boost_LIBRARY_DIRS}
+    ${OpenSSL_LIBRARY_DIRS}
 )
 
 if (CMAKE_COMPILER_IS_GNUCXX)
