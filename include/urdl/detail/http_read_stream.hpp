@@ -240,6 +240,8 @@ public:
           = options_.get_option<urdl::http::request_content_type>().value();
         std::string user_agent
           = options_.get_option<urdl::http::user_agent>().value();
+        std::string user_defined
+          = options_.get_option<urdl::http::user_defined>().value();
 
         // Form the request. We specify the "Connection: close" header so that
         // the server will close the socket after transmitting the response.
@@ -267,6 +269,8 @@ public:
         }
         if (user_agent.length())
           request_stream << "User-Agent: " << user_agent << "\r\n";
+        if (user_defined.length())
+          request_stream << user_defined << "\r\n";
         request_stream << "Connection: close\r\n\r\n";
         request_stream << request_content;
       }
